@@ -8,3 +8,10 @@
 - Day + Night
 - Falling Meteor
 - Background Art
+
+## How to Run
+```bash
+cd dino-game
+npm install
+npm run start
+```
