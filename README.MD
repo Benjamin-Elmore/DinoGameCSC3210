@@ -7,3 +7,4 @@
 - Jump Counter and Achievements
 - Day + Night
 - Falling Meteor
+- Background Art
