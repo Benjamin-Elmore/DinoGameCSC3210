@@ -1,0 +1,239 @@
+.game {
+  width: 600px;
+  height: 225px;
+  border: 1px solid black;
+  margin: auto;
+}
+
+.game {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: white;
+  color: black;
+}
+
+#meteor {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-image: url("img/meteor-bw.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
+
+  left: 620px;
+  top: -40px;
+  animation: meteor-flight 4s linear;
+}
+
+@keyframes meteor-flight {
+  0% {
+    left: 620px;
+    top: -40px;
+  }
+
+  45% {
+    left: 330px;
+    top: 170px;
+  }
+
+  100% {
+    left: -50px;
+    top: 170px;
+  }
+}
+
+.game.night #meteor {
+  filter: invert(1);
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("img/desert-background-bw.png");
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: auto 225px;
+  image-rendering: pixelated;
+  filter: invert(1);
+  opacity: 0.65;
+}
+
+.game.night .sky::before {
+  filter: none;
+  opacity: 0.75;
+}
+
+.sky img {
+  position: absolute;
+  image-rendering: pixelated;
+}
+
+.celestial {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  top: 12px;
+  right: 24px;
+}
+
+.cloud {
+  width: 100px;
+  height: auto;
+  left: 100%;
+  animation: cloud-drift 20s linear infinite;
+}
+
+.cloud-one {
+  top: 58px;
+}
+
+.cloud-two {
+  top: 88px;
+  animation-delay: -10s;
+}
+
+@keyframes cloud-drift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-720px);
+  }
+}
+
+.game.night {
+  background: black;
+  color: white;
+}
+
+.game.night #dino,
+.game.night #cactus {
+  filter: invert(1);
+  mix-blend-mode: screen;
+}
+
+.game-over #dino,
+.game-over #cactus,
+.game-over #meteor,
+.game-over .cloud {
+  animation-play-state: paused;
+}
+
+.game-over-message {
+  position: absolute;
+  z-index: 10;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border: 2px solid currentColor;
+  background: inherit;
+  text-align: center;
+}
+
+.game-over-message button {
+  margin-top: 8px;
+}
+
+.achievements {
+  width: 600px;
+  margin: 12px auto;
+  text-align: center;
+}
+
+#dino {
+  width: 50px;
+  height: 50px;
+  background-image: url(img/trex.png);
+  background-size: 50px 50px;
+  mix-blend-mode: multiply;
+  position: absolute;
+  left: 0;
+  top: 150px;
+}
+
+.jump {
+  animation: jump 0.6s linear;
+}
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+
+  10% {
+    top: 121px;
+  }
+
+  20% {
+    top: 99px;
+  }
+
+  30% {
+    top: 83px;
+  }
+
+  40% {
+    top: 73px;
+  }
+
+  50% {
+    top: 70px;
+  }
+
+  60% {
+    top: 73px;
+  }
+
+  70% {
+    top: 83px;
+  }
+
+  80% {
+    top: 99px;
+  }
+
+  90% {
+    top: 121px;
+  }
+
+  100% {
+    top: 150px;
+  }
+}
+
+#cactus {
+  width: 20px;
+  height: 40px;
+  position: absolute;
+  top: 160px;
+  left: 580px;
+
+  background-image: url("img/cactus.png");
+  background-size: 20px 40px;
+  mix-blend-mode: multiply;
+
+  animation: block 1s infinite linear;
+}
+
+@keyframes block {
+  0% {
+    left: 580px;
+  }
+
+  100% {
+    left: -5px;
+  }
+}
